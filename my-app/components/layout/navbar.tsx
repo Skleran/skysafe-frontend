@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/components/providers/language-provider";
-import { ModeToggle } from "@/components/theme-selector";
 
 const SkySafeLogo = () => (
   <svg viewBox="0 0 120 120" aria-label="SkySafe" className="w-9 h-9 shrink-0">
@@ -71,21 +70,18 @@ export function Navbar() {
           ))}
         </ul>
 
-        {/* Right controls */}
-        <div className="flex items-center gap-3">
-          <ModeToggle />
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={toggleLang}
-            className="border-[rgba(224,58,58,0.4)] bg-transparent text-white hover:border-[#E03A3A] hover:bg-transparent hover:text-white rounded-sm px-3"
-            style={{ fontSize: "11px", letterSpacing: "2px", fontWeight: 600 }}
-          >
-            <span style={{ color: lang === "tr" ? "#E03A3A" : "rgba(255,255,255,0.55)" }}>TR</span>
-            <span className="mx-1 opacity-40">/</span>
-            <span style={{ color: lang === "en" ? "#E03A3A" : "rgba(255,255,255,0.55)" }}>EN</span>
-          </Button>
-        </div>
+        {/* Language toggle */}
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={toggleLang}
+          className="border-[rgba(224,58,58,0.4)] bg-transparent text-white hover:border-[#E03A3A] hover:bg-transparent hover:text-white rounded-sm px-3"
+          style={{ fontSize: "11px", letterSpacing: "2px", fontWeight: 600 }}
+        >
+          <span style={{ color: lang === "tr" ? "#E03A3A" : "rgba(255,255,255,0.55)" }}>TR</span>
+          <span className="mx-1 opacity-40">/</span>
+          <span style={{ color: lang === "en" ? "#E03A3A" : "rgba(255,255,255,0.55)" }}>EN</span>
+        </Button>
       </div>
     </nav>
   );

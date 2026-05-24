@@ -1,21 +1,21 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
 /* SkySafe Brand Tokens */
 :root {
   /* Brand colours */
-  --ss-red: #E03A3A;
-  --ss-red-dark: #C82828;
+  --ss-red: #e03a3a;
+  --ss-red-dark: #c82828;
   --ss-red-glow: rgba(224, 58, 58, 0.15);
-  --ss-ink: #0A0A0A;
+  --ss-ink: #0a0a0a;
   --ss-ink-2: #141414;
-  --ss-ink-3: #1E1E1E;
-  --ss-cream: #F5F0F0;
-  --ss-paper: #FAF8F8;
-  --ss-muted: #6B6B6B;
+  --ss-ink-3: #1e1e1e;
+  --ss-cream: #f5f0f0;
+  --ss-paper: #faf8f8;
+  --ss-muted: #6b6b6b;
   --ss-line: rgba(224, 58, 58, 0.3);
 
   /* shadcn tokens — light mode */
@@ -25,7 +25,7 @@
   --card-foreground: oklch(0.1 0.004 49.3);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.1 0.004 49.3);
-  --primary: oklch(0.52 0.2 25);          /* brand red */
+  --primary: oklch(0.52 0.2 25); /* brand red */
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.95 0.005 30);
   --secondary-foreground: oklch(0.15 0.005 30);
@@ -37,7 +37,7 @@
   --border: oklch(0.9 0.006 30);
   --input: oklch(0.9 0.006 30);
   --ring: oklch(0.52 0.2 25);
-  --radius: 0.25rem;                       /* sharp edges to match brand */
+  --radius: 0.25rem; /* sharp edges to match brand */
   --chart-1: oklch(0.52 0.2 25);
   --chart-2: oklch(0.547 0.021 43.1);
   --chart-3: oklch(0.438 0.017 39.3);
@@ -140,6 +140,60 @@
   }
   html {
     @apply font-sans;
-    scroll-behavior: smooth;
   }
+}
+
+/* ====== Success animation keyframes ====== */
+@keyframes ss-ring-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.06);
+  }
+}
+@keyframes ss-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes ss-check-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes ss-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== Autofill overrides ====== */
+/* Contact section — cream/light background */
+#contact input:-webkit-autofill,
+#contact input:-webkit-autofill:hover,
+#contact input:-webkit-autofill:focus,
+#contact input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #F5F0F0 inset !important;
+  -webkit-text-fill-color: #0A0A0A !important;
+  caret-color: #0A0A0A;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Investor section — carbon/dark background */
+#investor input:-webkit-autofill,
+#investor input:-webkit-autofill:hover,
+#investor input:-webkit-autofill:focus,
+#investor input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #0A0A0A inset !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.9) !important;
+  caret-color: #fff;
+  transition: background-color 9999s ease-in-out 0s;
 }
