@@ -140,6 +140,7 @@
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
 }
 
@@ -171,29 +172,12 @@
   }
 }
 @keyframes ss-fade-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ====== Autofill overrides ====== */
-/* Contact section — cream/light background */
-#contact input:-webkit-autofill,
-#contact input:-webkit-autofill:hover,
-#contact input:-webkit-autofill:focus,
-#contact input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px #F5F0F0 inset !important;
-  -webkit-text-fill-color: #0A0A0A !important;
-  caret-color: #0A0A0A;
-  transition: background-color 9999s ease-in-out 0s;
-}
-
-/* Investor section — carbon/dark background */
-#investor input:-webkit-autofill,
-#investor input:-webkit-autofill:hover,
-#investor input:-webkit-autofill:focus,
-#investor input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px #0A0A0A inset !important;
-  -webkit-text-fill-color: rgba(255,255,255,0.9) !important;
-  caret-color: #fff;
-  transition: background-color 9999s ease-in-out 0s;
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
