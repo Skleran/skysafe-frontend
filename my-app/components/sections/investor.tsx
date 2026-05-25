@@ -296,6 +296,7 @@ export function Investor() {
               */}
                   <div className="space-y-2">
                     <Label
+                      htmlFor="inv-type"
                       className="text-[10px] font-semibold uppercase"
                       style={{
                         letterSpacing: '3px',

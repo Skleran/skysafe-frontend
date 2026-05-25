@@ -149,7 +149,7 @@ export function Solutions() {
                   {content.body}
                 </p>
                 <a
-                  href="#"
+                  href="#contact"
                   className="mt-auto pt-6 text-[11px] font-semibold uppercase no-underline transition-colors"
                   style={{
                     letterSpacing: "3px",

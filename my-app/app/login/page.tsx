@@ -138,6 +138,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -174,7 +175,7 @@ export default function LoginPage() {
         {/* Footer Link */}
         <div className="mt-6 text-center">
           <p className="text-xs text-white/40 font-light">
-            Don't have an administrator account?{" "}
+            Don&apos;t have an administrator account?{" "}
             <Link
               href="/signup"
               className="text-[#E03A3A] hover:underline font-normal tracking-[0.5px]"

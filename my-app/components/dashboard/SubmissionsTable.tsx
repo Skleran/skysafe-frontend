@@ -92,8 +92,16 @@ export function SubmissionsTable({
                   {filteredContacts.map((item) => (
                     <TableRow
                       key={item.id}
-                      className="border-b border-white/5 hover:bg-white/[0.02] cursor-pointer transition-colors group"
+                      className="border-b border-white/5 hover:bg-white/[0.02] cursor-pointer transition-colors group focus-visible:outline-none focus-visible:bg-white/[0.04] focus-visible:ring-1 focus-visible:ring-[#E03A3A]/60"
                       onClick={() => onRowClick(item, 'contact')}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          onRowClick(item, 'contact');
+                        }
+                      }}
                     >
                       <TableCell className="font-light text-xs text-white/70 h-14">
                         {formatDate(item.created_at)}
@@ -185,8 +193,16 @@ export function SubmissionsTable({
                   {filteredInvestors.map((item) => (
                     <TableRow
                       key={item.id}
-                      className="border-b border-white/5 hover:bg-white/[0.02] cursor-pointer transition-colors group"
+                      className="border-b border-white/5 hover:bg-white/[0.02] cursor-pointer transition-colors group focus-visible:outline-none focus-visible:bg-white/[0.04] focus-visible:ring-1 focus-visible:ring-[#E03A3A]/60"
                       onClick={() => onRowClick(item, 'investor')}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          onRowClick(item, 'investor');
+                        }
+                      }}
                     >
                       <TableCell className="font-light text-xs text-white/70 h-14">
                         {formatDate(item.created_at)}
