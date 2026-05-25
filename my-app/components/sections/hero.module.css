@@ -1,0 +1,52 @@
+/* hero.module.css */
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes moveGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 80px 80px;
+  }
+}
+
+/* Radial glow overlay – subtle pulsating effect */
+.glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 70% 30%,
+      rgba(224, 58, 58, 0.08) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 60%,
+      rgba(224, 58, 58, 0.04) 100%
+    );
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Grid lines – slowly drifting */
+.grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: moveGrid 10s linear infinite;
+}

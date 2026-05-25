@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import styles from './hero.module.css';
 import { useLanguage } from '@/components/providers/language-provider';
 import { ScrollReveal, RevealItem } from '@/components/scroll-reveal';
 
@@ -18,23 +19,10 @@ export function Hero() {
       }}
     >
       {/* Radial glow overlays */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse at 70% 30%, rgba(224,58,58,0.08) 0%, transparent 50%), linear-gradient(135deg, transparent 0%, transparent 60%, rgba(224,58,58,0.04) 100%)',
-        }}
-      />
+      <div className={styles.glow} />
 
       {/* Grid lines */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
-          backgroundSize: '80px 80px',
-        }}
-      />
+      <div className={styles.grid} />
 
       <ScrollReveal
         preset={false}
@@ -99,7 +87,7 @@ export function Hero() {
           <div className="flex flex-wrap gap-4 mb-24">
             <Button
               asChild
-              className="rounded-none uppercase hover:bg-[#E03A3A]/80"
+              className="rounded-none uppercase hover:bg-[#E03A3A]/80 w-full sm:w-auto"
               style={{
                 // background: '#E03A3A',
                 color: '#0A0A0A',
@@ -118,7 +106,7 @@ export function Hero() {
             <Button
               asChild
               variant="outline"
-              className="rounded-none uppercase"
+              className="rounded-none uppercase w-full sm:w-auto"
               style={{
                 // background: 'transparent',
                 color: '#fff',
@@ -138,7 +126,7 @@ export function Hero() {
         {/* Trust row */}
         <RevealItem delayIndex={4} direction="up">
           <div
-            className="flex flex-wrap items-center gap-12 pt-8"
+            className="flex flex-wrap items-center gap-12 pt-8 justify-center sm:justify-start"
             style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
           >
             <span
