@@ -1,5 +1,7 @@
 'use client';
 
+import { ScrollReveal, RevealItem } from '@/components/scroll-reveal';
+
 import { useActionState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -83,7 +85,9 @@ export function Investor() {
       style={{ background: '#0A0A0A' }}
     >
       <div className="max-w-[1240px] mx-auto px-6 md:px-12">
+       <ScrollReveal>
         {/* Eyebrow */}
+        <RevealItem direction="up" delayIndex={0}>
         <div
           className="flex items-center gap-3.5 text-[11px] font-semibold uppercase mb-5"
           style={{ letterSpacing: '5px', color: '#E03A3A' }}
@@ -91,7 +95,9 @@ export function Investor() {
           <span className="w-8 h-px bg-[#E03A3A] shrink-0" />
           {t('YATIRIMCI İLİŞKİLERİ', 'INVESTOR RELATIONS')}
         </div>
+        </RevealItem>
 
+        <RevealItem direction="up" delayIndex={1}>
         <h2
           className="font-light mb-6 text-white"
           style={{
@@ -107,7 +113,9 @@ export function Investor() {
           </b>
           {t(' fırsatına ortak olun.', ' opportunity.')}
         </h2>
+        </RevealItem>
 
+        <RevealItem direction="up" delayIndex={2}>
         <p
           className="mb-6 font-light"
           style={{
@@ -121,10 +129,12 @@ export function Investor() {
             'SkySafe targets one of the most critical opportunities at the intersection of aviation safety, IoT hardware and data analytics. Pitch deck available upon request for the seed round.',
           )}
         </p>
+        </RevealItem>
 
         <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-[72px] mt-6">
           {/* Left: stats + bullet points */}
           <div>
+            <RevealItem direction="up" delayIndex={3}>
             <div
               className="grid grid-cols-2 gap-px mb-10"
               style={{
@@ -160,7 +170,9 @@ export function Investor() {
                 </div>
               ))}
             </div>
+            </RevealItem>
 
+            <RevealItem direction="up" delayIndex={4}>
             <ul className="list-none">
               {(lang === 'tr' ? investorPoints.tr : investorPoints.en).map(
                 (point) => (
@@ -182,9 +194,11 @@ export function Investor() {
                 ),
               )}
             </ul>
+            </RevealItem>
           </div>
 
           {/* Right: pitch deck form OR success */}
+          <RevealItem direction="up" delayIndex={3}>
           <div
             className="p-12"
             style={{
@@ -372,7 +386,9 @@ export function Investor() {
               </>
             )}
           </div>
+          </RevealItem>
         </div>
+       </ScrollReveal>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/components/providers/language-provider";
+import { ScrollReveal, RevealItem } from "@/components/scroll-reveal";
 
 const FodIcon = () => (
   <svg viewBox="0 0 60 60" fill="none" className="w-full h-full">
@@ -91,80 +92,93 @@ export function Solutions() {
       className="py-28"
       style={{ background: "var(--ss-cream, #F5F0F0)" }}
     >
-      <div className="max-w-[1240px] mx-auto px-6 md:px-12">
+      <ScrollReveal className="max-w-[1240px] mx-auto px-6 md:px-12">
         {/* Eyebrow */}
-        <div
-          className="flex items-center gap-3.5 text-[11px] font-semibold uppercase mb-5"
-          style={{ letterSpacing: "5px", color: "#C82828" }}
-        >
-          <span className="w-8 h-px bg-[#C82828] shrink-0" />
-          {t("ÇÖZÜMLERİMİZ", "OUR SOLUTIONS")}
-        </div>
+        <RevealItem delayIndex={0}>
+          <div
+            className="flex items-center gap-3.5 text-[11px] font-semibold uppercase mb-5"
+            style={{ letterSpacing: "5px", color: "#C82828" }}
+          >
+            <span className="w-8 h-px bg-[#C82828] shrink-0" />
+            {t("ÇÖZÜMLERİMİZ", "OUR SOLUTIONS")}
+          </div>
+        </RevealItem>
 
-        <h2
-          className="font-light mb-6"
-          style={{ fontSize: "clamp(32px,4vw,48px)", letterSpacing: "-0.8px", lineHeight: 1.1, maxWidth: 780, color: "#0A0A0A" }}
-        >
-          {t("Tek platform, üç entegre ", "One platform, three integrated ")}
-          <b className="font-medium" style={{ color: "#C82828" }}>
-            {t("katman", "layers")}
-          </b>
-          .
-        </h2>
-        <p
-          className="mb-16 font-light"
-          style={{ fontSize: "17px", color: "#6B6B6B", maxWidth: 680 }}
-        >
-          {t(
-            "Sensör donanımından operasyon yazılımına kadar uçtan uca bir güvenlik mimarisi sunuyoruz. Pist, apron ve hangar genelinde tek bir gerçeklik akışı.",
-            "An end-to-end safety architecture from sensor hardware to operations software. A single source of truth across runways, aprons, and hangars."
-          )}
-        </p>
+        <RevealItem delayIndex={1}>
+          <h2
+            className="font-light mb-6"
+            style={{ fontSize: "clamp(32px,4vw,48px)", letterSpacing: "-0.8px", lineHeight: 1.1, maxWidth: 780, color: "#0A0A0A" }}
+          >
+            {t("Tek platform, üç entegre ", "One platform, three integrated ")}
+            <b className="font-medium" style={{ color: "#C82828" }}>
+              {t("katman", "layers")}
+            </b>
+            .
+          </h2>
+        </RevealItem>
+
+        <RevealItem delayIndex={2}>
+          <p
+            className="mb-16 font-light"
+            style={{ fontSize: "17px", color: "#6B6B6B", maxWidth: 680 }}
+          >
+            {t(
+              "Sensör donanımından operasyon yazılımına kadar uçtan uca bir güvenlik mimarisi sunuyoruz. Pist, apron ve hangar genelinde tek bir gerçeklik akışı.",
+              "An end-to-end safety architecture from sensor hardware to operations software. A single source of truth across runways, aprons, and hangars."
+            )}
+          </p>
+        </RevealItem>
 
         {/* Cards grid */}
         <div
           className="grid grid-cols-1 md:grid-cols-3 gap-px"
           style={{ background: "rgba(0,0,0,0.08)", border: "1px solid rgba(0,0,0,0.08)" }}
         >
-          {solutions.map((sol) => {
+          {solutions.map((sol, index) => {
             const content = lang === "tr" ? sol.tr : sol.en;
             return (
-              <div
+              <RevealItem
                 key={sol.num}
-                className="group flex flex-col gap-5 transition-colors duration-250"
-                style={{ background: "#FAF8F8", padding: "48px 36px" }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "#fff")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "#FAF8F8")}
+                delayIndex={index + 3}
+                direction="up"
+                className="flex"
               >
-                <div className="text-[11px] font-semibold" style={{ letterSpacing: "4px", color: "#C82828" }}>
-                  {sol.num}
-                </div>
-                <div className="w-[54px] h-[54px]">
-                  <sol.Icon />
-                </div>
-                <h3 className="text-[22px] font-medium" style={{ letterSpacing: "-0.2px", color: "#0A0A0A" }}>
-                  {content.title}
-                </h3>
-                <p className="font-light leading-relaxed" style={{ fontSize: "14.5px", color: "#6B6B6B", lineHeight: 1.65 }}>
-                  {content.body}
-                </p>
-                <a
-                  href="#contact"
-                  className="mt-auto pt-6 text-[11px] font-semibold uppercase no-underline transition-colors"
-                  style={{
-                    letterSpacing: "3px",
-                    color: "#0A0A0A",
-                    borderTop: "1px solid rgba(224,58,58,0.3)",
-                  }}
+                <div
+                  className="group flex flex-col gap-5 transition-colors duration-250 w-full"
+                  style={{ background: "#FAF8F8", padding: "48px 36px" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#fff")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "#FAF8F8")}
                 >
-                  {content.more}
-                  <span style={{ color: "#C82828" }}> →</span>
-                </a>
-              </div>
+                  <div className="text-[11px] font-semibold" style={{ letterSpacing: "4px", color: "#C82828" }}>
+                    {sol.num}
+                  </div>
+                  <div className="w-[54px] h-[54px]">
+                    <sol.Icon />
+                  </div>
+                  <h3 className="text-[22px] font-medium" style={{ letterSpacing: "-0.2px", color: "#0A0A0A" }}>
+                    {content.title}
+                  </h3>
+                  <p className="font-light leading-relaxed" style={{ fontSize: "14.5px", color: "#6B6B6B", lineHeight: 1.65 }}>
+                    {content.body}
+                  </p>
+                  <a
+                    href="#contact"
+                    className="mt-auto pt-6 text-[11px] font-semibold uppercase no-underline transition-colors"
+                    style={{
+                      letterSpacing: "3px",
+                      color: "#0A0A0A",
+                      borderTop: "1px solid rgba(224,58,58,0.3)",
+                    }}
+                  >
+                    {content.more}
+                    <span style={{ color: "#C82828" }}> →</span>
+                  </a>
+                </div>
+              </RevealItem>
             );
           })}
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

@@ -13,6 +13,7 @@ import {
   type ContactFormState,
 } from '@/app/actions/contact';
 import { useLanguage } from '@/components/providers/language-provider';
+import { ScrollReveal, RevealItem } from '@/components/scroll-reveal';
 
 const initialState: ContactFormState = { status: 'idle' };
 
@@ -92,7 +93,9 @@ export function Contact() {
       style={{ background: 'var(--ss-cream, #F5F0F0)' }}
     >
       <div className="max-w-[1240px] mx-auto px-6 md:px-12">
+       <ScrollReveal>
         {/* Eyebrow */}
+        <RevealItem delayIndex={0} direction="up">
         <div
           className="flex items-center gap-3.5 text-[11px] font-semibold uppercase mb-5"
           style={{ letterSpacing: '5px', color: '#C82828' }}
@@ -100,7 +103,9 @@ export function Contact() {
           <span className="w-8 h-px bg-[#C82828] shrink-0" />
           {t('İLETİŞİM', 'CONTACT')}
         </div>
+        </RevealItem>
 
+        <RevealItem delayIndex={1} direction="up">
         <h2
           className="font-light mb-16"
           style={{
@@ -120,15 +125,16 @@ export function Contact() {
             ' will work for your operation.',
           )}
         </h2>
+        </RevealItem>
 
         <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-[72px] items-start">
           {/* Left: contact info blocks */}
           <div className="flex flex-col gap-8">
-            {contactBlocks.map((block) => {
+            {contactBlocks.map((block, index) => {
               const c = lang === 'tr' ? block.tr : block.en;
               return (
+                <RevealItem key={c.lab} delayIndex={index + 2} direction="up">
                 <div
-                  key={c.lab}
                   className="pl-5"
                   style={{ borderLeft: '2px solid #C82828' }}
                 >
@@ -148,11 +154,13 @@ export function Contact() {
                     {c.sub}
                   </div>
                 </div>
+                </RevealItem>
               );
             })}
           </div>
 
           {/* Right: contact form OR success state */}
+          <RevealItem delayIndex={3} direction="up">
           {state.status === 'success' ? (
             <FormSuccess
               variant="light"
@@ -279,7 +287,9 @@ export function Contact() {
               </Button>
             </form>
           )}
+          </RevealItem>
         </div>
+       </ScrollReveal>
       </div>
     </section>
   );
