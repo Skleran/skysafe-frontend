@@ -106,7 +106,7 @@ export function Hero() {
             <Button
               asChild
               variant="outline"
-              className="rounded-none uppercase w-full sm:w-auto"
+              className="rounded-none uppercase hover:bg-neutral-800/25 dark:hover:bg-neutral-800/25 w-full sm:w-auto"
               style={{
                 // background: 'transparent',
                 color: '#fff',
