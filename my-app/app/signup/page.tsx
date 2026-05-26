@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabaseBrowserClient } from "@/lib/supabase/client";
@@ -30,6 +30,23 @@ export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [authChecking, setAuthChecking] = useState(true);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        const { data: { session } } = await supabaseBrowserClient.auth.getSession();
+        if (session) {
+          router.push("/dashboard");
+        } else {
+          setAuthChecking(false);
+        }
+      } catch (err) {
+        setAuthChecking(false);
+      }
+    };
+    checkSession();
+  }, [router]);
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,6 +96,17 @@ export default function SignupPage() {
       setIsLoading(false);
     }
   };
+
+  if (authChecking) {
+    return (
+      <main className="min-h-screen bg-[#0A0A0A] text-white flex flex-col justify-center items-center">
+        <Loader2 className="w-10 h-10 animate-spin text-[#E03A3A] mb-4" />
+        <span className="text-xs uppercase tracking-[3px] text-white/50 animate-pulse">
+          Verifying Session...
+        </span>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-[#0A0A0A] text-white flex flex-col justify-center items-center relative overflow-hidden px-4">

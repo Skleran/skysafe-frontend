@@ -81,8 +81,9 @@ export default function DashboardPage() {
     };
   }, [router]);
 
-  // 2. Fetch submission logs from Supabase
-  const fetchSubmissions = async () => {
+  // 2. Fetch submission logs from Supabase with clock-skew retry handling
+  const fetchSubmissions = async (retryCount: any = 0): Promise<void> => {
+    const actualRetryCount = typeof retryCount === 'number' ? retryCount : 0;
     setDataLoading(true);
     setErrorMsg(null);
     try {
@@ -97,8 +98,21 @@ export default function DashboardPage() {
           .order('created_at', { ascending: false }),
       ]);
 
-      if (contactRes.error) throw contactRes.error;
-      if (investorRes.error) throw investorRes.error;
+      const err = contactRes.error || investorRes.error;
+      if (err) {
+        // PostgREST/Supabase code PGRST303 is "JWT issued at future", typically caused by client clock drift
+        if (
+          (err.code === 'PGRST303' || err.message?.includes('JWT issued at future')) &&
+          actualRetryCount < 2
+        ) {
+          console.warn(
+            `Clock skew detected (JWT issued in future). Retrying database fetch (attempt ${actualRetryCount + 1})...`,
+          );
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          return fetchSubmissions(actualRetryCount + 1);
+        }
+        throw err;
+      }
 
       setContactSubmissions(contactRes.data || []);
       setInvestorSubmissions(investorRes.data || []);
