@@ -44,6 +44,9 @@ export default function RootLayout({
       )}
       suppressHydrationWarning
     >
+      <head>
+        <meta name="apple-mobile-web-app-title" content="SkySafe" />
+      </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider
           attribute="class"

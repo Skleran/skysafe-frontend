@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><g clip-path="url(#SvgjsClipPath1222)"><rect width="1000" height="1000" fill="#000000"></rect><g transform="matrix(6.666666666666667,0,0,6.666666666666667,100,100)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><style>
+    .logo-ring {
+      fill: none;
+      stroke: #0A0A0A;
+      stroke-width: 2;
+    }
+    .logo-line {
+      stroke: #0A0A0A;
+      stroke-width: 3;
+      stroke-linecap: round;
+    }
+    .logo-base {
+      stroke: #0A0A0A;
+      stroke-width: 2;
+      opacity: 0.4;
+    }
+    .logo-dot {
+      fill: #E03A3A;
+    }
+    @media (prefers-color-scheme: dark) {
+      .logo-ring {
+        stroke: #FFFFFF;
+      }
+      .logo-line {
+        stroke: #FFFFFF;
+      }
+      .logo-base {
+        stroke: #FFFFFF;
+      }
+    }
+  </style><circle cx="60" cy="60" r="54" class="logo-ring"></circle><line x1="22" y1="100" x2="60" y2="16" class="logo-line"></line><line x1="98" y1="100" x2="60" y2="16" class="logo-line"></line><line x1="22" y1="100" x2="98" y2="100" class="logo-base"></line><circle cx="60" cy="16" r="12" class="logo-dot"></circle></svg></g></g><defs><clipPath id="SvgjsClipPath1222"><rect width="1000" height="1000" x="0" y="0" rx="350" ry="350"></rect></clipPath></defs></svg>
